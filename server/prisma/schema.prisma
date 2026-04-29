@@ -1,0 +1,98 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./edubloom.db"
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  name         String
+  email        String?  @unique
+  phone        String?  @unique
+  passwordHash String
+  role         String   // "teacher" | "student"
+  createdAt    DateTime @default(now())
+
+  taughtStudents  Student[] @relation("TeacherStudents")
+  studentProfile  Student?  @relation("StudentUser")
+
+  createdSchedules   Schedule[]  @relation("TeacherSchedules")
+  createdHomework    Homework[]  @relation("TeacherHomework")
+  createdGrades      Grade[]     @relation("TeacherGrades")
+}
+
+model Student {
+  id        Int  @id @default(autoincrement())
+  userId    Int  @unique
+  teacherId Int
+
+  user    User @relation("StudentUser", fields: [userId], references: [id])
+  teacher User @relation("TeacherStudents", fields: [teacherId], references: [id])
+
+  schedules         ScheduleStudent[]
+  homeworkAssigned  HomeworkStudent[]
+  grades            Grade[]
+}
+
+model Schedule {
+  id        Int    @id @default(autoincrement())
+  teacherId Int
+  subject   String
+  dayOfWeek Int    // 1=Mon..7=Sun
+  startTime String // "HH:MM"
+  endTime   String // "HH:MM"
+  room      String?
+
+  teacher  User              @relation("TeacherSchedules", fields: [teacherId], references: [id])
+  students ScheduleStudent[]
+}
+
+model ScheduleStudent {
+  scheduleId Int
+  studentId  Int
+
+  schedule Schedule @relation(fields: [scheduleId], references: [id], onDelete: Cascade)
+  student  Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@id([scheduleId, studentId])
+}
+
+model Homework {
+  id          Int      @id @default(autoincrement())
+  teacherId   Int
+  title       String
+  description String?
+  dueDate     DateTime
+  createdAt   DateTime @default(now())
+
+  teacher   User              @relation("TeacherHomework", fields: [teacherId], references: [id])
+  students  HomeworkStudent[]
+}
+
+model HomeworkStudent {
+  homeworkId  Int
+  studentId   Int
+  completed   Boolean  @default(false)
+  completedAt DateTime?
+
+  homework Homework @relation(fields: [homeworkId], references: [id], onDelete: Cascade)
+  student  Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@id([homeworkId, studentId])
+}
+
+model Grade {
+  id        Int      @id @default(autoincrement())
+  teacherId Int
+  studentId Int
+  subject   String
+  grade     Int      // 1-5 or percent
+  comment   String?
+  date      DateTime @default(now())
+
+  teacher User    @relation("TeacherGrades", fields: [teacherId], references: [id])
+  student Student @relation(fields: [studentId], references: [id])
+}

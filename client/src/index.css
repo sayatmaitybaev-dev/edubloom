@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-pink-50 text-gray-800 font-sans;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-pink-500 hover:bg-pink-600 text-white font-semibold px-5 py-2.5 rounded-xl
+           transition-all duration-200 shadow-sm hover:shadow-md active:scale-95 disabled:opacity-50;
+  }
+  .btn-secondary {
+    @apply bg-white hover:bg-pink-50 text-pink-600 font-semibold px-5 py-2.5 rounded-xl
+           border border-pink-200 transition-all duration-200 hover:border-pink-400 active:scale-95;
+  }
+  .btn-danger {
+    @apply bg-red-50 hover:bg-red-100 text-red-600 font-medium px-4 py-2 rounded-lg
+           border border-red-200 transition-all duration-200 active:scale-95;
+  }
+  .card {
+    @apply bg-white rounded-2xl shadow-sm border border-pink-100 p-6;
+  }
+  .input {
+    @apply w-full border border-pink-200 rounded-xl px-4 py-2.5 text-gray-800
+           focus:outline-none focus:ring-2 focus:ring-pink-300 focus:border-pink-400
+           placeholder-gray-400 bg-white transition-all duration-200;
+  }
+  .label {
+    @apply block text-sm font-medium text-gray-600 mb-1;
+  }
+  .badge-done {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium
+           bg-green-100 text-green-700;
+  }
+  .badge-pending {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium
+           bg-amber-100 text-amber-700;
+  }
+}
