@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sofya — репетитор английского языка</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --pink:   #f2a7b8;
+      --pink-d: #e07d96;
+      --rose:   #fdf0f3;
+      --cream:  #fdf8f5;
+      --brown:  #3d2530;
+      --gray:   #7a6570;
+      --light:  #f9eef1;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--brown); line-height: 1.6; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      background: rgba(253,240,243,0.93); backdrop-filter: blur(14px);
+      z-index: 100; border-bottom: 1px solid #f0d5dc;
+    }
+    .nav-inner {
+      max-width: 960px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 24px;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 600; color: var(--pink-d);
+    }
+    .nav-links { display: flex; gap: 6px; }
+    .nav-links a {
+      text-decoration: none; font-size: 0.875rem; font-weight: 500;
+      color: var(--gray); padding: 8px 16px; border-radius: 50px; transition: all .2s;
+    }
+    .nav-links a:hover, .nav-links a.active { background: var(--pink-d); color: #fff; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #fdf0f3 0%, #fce8ed 50%, #f5dde5 100%);
+      padding: 100px 24px 60px;
+    }
+    .hero-inner {
+      max-width: 960px; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+    }
+    .hero-photo-wrap { position: relative; display: flex; justify-content: center; }
+    .hero-photo-wrap img,
+    .photo-blob {
+      width: 100%; max-width: 360px;
+      border-radius: 42% 58% 62% 38% / 38% 42% 58% 62%;
+      object-fit: cover; aspect-ratio: 3/4; display: block;
+      box-shadow: 0 32px 80px rgba(224,125,150,.32);
+    }
+    .photo-blob {
+      background: linear-gradient(135deg, var(--pink) 0%, var(--pink-d) 100%);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      color: white; text-align: center; padding: 40px;
+      font-size: .85rem; gap: 12px;
+    }
+    .photo-blob .emoji { font-size: 72px; }
+    .photo-blob p { opacity: .85; line-height: 1.5; }
+    .hero-badge {
+      position: absolute; bottom: 28px; right: 0;
+      background: white; border-radius: 18px; padding: 13px 18px;
+      box-shadow: 0 12px 32px rgba(0,0,0,.1);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .hero-badge .num { font-size: 1.6rem; font-weight: 700; color: var(--pink-d); line-height: 1; }
+    .hero-badge .lbl { font-size: .72rem; color: var(--gray); line-height: 1.4; }
+
+    .hero-text .pre {
+      font-size: .72rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase;
+      color: var(--pink-d); margin-bottom: 10px;
+    }
+    .hero-text h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 4.5vw, 3.4rem); font-weight: 600; line-height: 1.1; color: var(--brown);
+    }
+    .hero-text h1 em { font-style: italic; color: var(--pink-d); }
+    .hero-sub { font-size: 1rem; color: var(--gray); margin: 18px 0 28px; line-height: 1.75; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px; }
+    .tag {
+      background: white; border: 1px solid #f0d5dc;
+      color: var(--brown); font-size: .78rem; padding: 6px 14px; border-radius: 50px;
+    }
+    .btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-weight: 600; font-size: .9rem;
+      padding: 13px 26px; border-radius: 50px; text-decoration: none;
+      transition: all .2s; cursor: pointer; border: none;
+    }
+    .btn-main {
+      background: var(--pink-d); color: white;
+      box-shadow: 0 8px 24px rgba(224,125,150,.4);
+    }
+    .btn-main:hover { background: #c86882; transform: translateY(-2px); }
+    .btn-out {
+      background: transparent; color: var(--pink-d);
+      border: 2px solid var(--pink);
+    }
+    .btn-out:hover { background: var(--pink); color: white; }
+
+    /* SECTIONS */
+    section { padding: 86px 24px; }
+    .wrap { max-width: 960px; margin: 0 auto; }
+    .s-label {
+      font-size: .72rem; font-weight: 600; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--pink-d); margin-bottom: 10px;
+    }
+    .s-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.9rem, 3.2vw, 2.7rem); font-weight: 600;
+      color: var(--brown); margin-bottom: 44px; line-height: 1.2;
+    }
+
+    /* ABOUT */
+    #about { background: white; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+    .about-left p { color: var(--gray); margin-bottom: 16px; font-size: .97rem; }
+    .about-left p strong { color: var(--brown); }
+    .about-left blockquote {
+      border-left: 3px solid var(--pink); padding-left: 16px;
+      margin: 24px 0; font-style: italic; color: var(--gray); font-size: .95rem;
+    }
+    .achieve-list { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
+    .achieve-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      background: var(--rose); border-radius: 14px; padding: 14px 16px;
+    }
+    .achieve-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .achieve-item p { font-size: .88rem; color: var(--brown); margin: 0; }
+
+    .about-right { display: flex; flex-direction: column; gap: 16px; }
+    .stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 4px; }
+    .stat-card {
+      background: var(--rose); border-radius: 20px; padding: 22px; text-align: center;
+    }
+    .stat-card .n {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem; font-weight: 600; color: var(--pink-d); line-height: 1;
+    }
+    .stat-card .l { font-size: .75rem; color: var(--gray); margin-top: 4px; }
+    .value-card {
+      display: flex; gap: 14px; align-items: flex-start;
+      background: var(--rose); border-radius: 16px; padding: 18px;
+    }
+    .v-icon {
+      width: 42px; height: 42px; flex-shrink: 0;
+      background: var(--pink); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; font-size: 1.15rem;
+    }
+    .value-card h4 { font-size: .9rem; font-weight: 600; color: var(--brown); margin-bottom: 3px; }
+    .value-card p { font-size: .82rem; color: var(--gray); }
+
+    /* PRICE */
+    #price { background: var(--rose); }
+    .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+    .price-card {
+      background: white; border-radius: 26px; padding: 32px 26px;
+      border: 2px solid transparent; transition: all .25s; position: relative;
+    }
+    .price-card:hover { border-color: var(--pink); transform: translateY(-4px); box-shadow: 0 20px 50px rgba(224,125,150,.15); }
+    .price-card.feat {
+      background: linear-gradient(135deg, var(--pink-d) 0%, #c46880 100%);
+    }
+    .price-card.feat .pname,
+    .price-card.feat .pamount,
+    .price-card.feat .pdesc,
+    .price-card.feat li { color: white !important; }
+    .price-card.feat li::before { background: rgba(255,255,255,.5) !important; }
+    .pop-badge {
+      position: absolute; top: 18px; right: 18px;
+      background: white; color: var(--pink-d);
+      font-size: .68rem; font-weight: 700; padding: 4px 10px; border-radius: 50px;
+    }
+    .pname { font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--gray); margin-bottom: 14px; }
+    .pamount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.9rem; font-weight: 600; color: var(--brown); line-height: 1;
+    }
+    .pamount sup { font-size: 1.2rem; vertical-align: super; }
+    .pamount span { font-size: 1rem; color: var(--gray); }
+    .pdesc { font-size: .83rem; color: var(--gray); margin: 10px 0 18px; }
+    .price-card ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .price-card li { font-size: .85rem; color: var(--brown); display: flex; align-items: center; gap: 9px; }
+    .price-card li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--pink); flex-shrink: 0; }
+    .price-note { text-align: center; color: var(--gray); font-size: .85rem; margin-top: 30px; line-height: 1.8; }
+    .free-pill {
+      display: inline-block; margin-top: 10px;
+      background: var(--pink-d); color: white;
+      font-weight: 600; font-size: .85rem;
+      padding: 8px 20px; border-radius: 50px;
+    }
+
+    /* REVIEWS */
+    #reviews { background: white; }
+    .reviews-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .r-card {
+      background: var(--rose); border-radius: 24px; padding: 28px;
+      border: 1px solid #f0d5dc;
+    }
+    .r-card.wide { grid-column: 1 / -1; }
+    .qmark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem; line-height: .4; color: var(--pink);
+      margin-bottom: 10px; display: block;
+    }
+    .r-text { color: var(--brown); font-size: .95rem; line-height: 1.8; margin-bottom: 20px; }
+    .r-author { display: flex; align-items: center; gap: 12px; }
+    .avatar {
+      width: 42px; height: 42px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--pink), var(--pink-d));
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-weight: 700; font-size: 1rem;
+    }
+    .a-name { font-weight: 600; font-size: .88rem; color: var(--brown); }
+    .a-role { font-size: .75rem; color: var(--gray); }
+    .stars { color: #f59e0b; font-size: .82rem; margin-top: 2px; }
+
+    /* CONTACT */
+    #contact {
+      background: linear-gradient(135deg, #f9dde5 0%, #fce8ed 100%);
+      text-align: center;
+    }
+    #contact .s-title { margin-bottom: 14px; }
+    #contact > .wrap > p { color: var(--gray); margin-bottom: 36px; }
+    .c-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-ig { background: linear-gradient(135deg, #f77737, #e1306c, #833ab4); color: white; }
+    .btn-ig:hover { opacity: .9; transform: translateY(-2px); }
+
+    footer {
+      background: var(--brown); color: rgba(255,255,255,.55);
+      text-align: center; padding: 22px; font-size: .78rem;
+    }
+    footer span { color: var(--pink); }
+
+    /* MOBILE */
+    @media (max-width: 680px) {
+      .nav-links a { padding: 7px 11px; font-size: .78rem; }
+      .hero-inner { grid-template-columns: 1fr; gap: 36px; text-align: center; }
+      .hero-photo-wrap { justify-content: center; }
+      .photo-blob, .hero-photo-wrap img { max-width: 280px; }
+      .hero-badge { right: 10px; }
+      .tags, .btns { justify-content: center; }
+      .about-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .r-card.wide { grid-column: 1; }
+      .c-btns { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">Sofya ✦</div>
+    <div class="nav-links">
+      <a href="#about">Обо мне</a>
+      <a href="#price">Прайс</a>
+      <a href="#reviews">Отзывы</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-photo-wrap">
+      <!--
+        ФОТО: замените строку ниже на тег <img> с вашим фото.
+        Пример: <img src="photo.jpg" alt="Sofya" />
+        Загрузите фото в ту же папку website/ рядом с index.html
+      -->
+      <div class="photo-blob">
+        <div class="emoji">🌸</div>
+        <p>Здесь будет<br>ваше фото</p>
+      </div>
+      <div class="hero-badge">
+        <div class="num">50+</div>
+        <div class="lbl">довольных<br>учеников</div>
+      </div>
+    </div>
+
+    <div class="hero-text">
+      <p class="pre">Репетитор английского языка</p>
+      <h1>Привет, я<br><em>Sofya</em> 🌸</h1>
+      <p class="hero-sub">
+        21 год, образование переводчика. Открываю долгожданный набор! За год работы — десятки довольных учеников и реальные результаты.
+      </p>
+      <div class="tags">
+        <span class="tag">🇬🇧 Английский язык</span>
+        <span class="tag">🎒 Подготовка к школе</span>
+        <span class="tag">👶 Дети и подростки</span>
+        <span class="tag">👥 Группы и индивидуально</span>
+      </div>
+      <div class="btns">
+        <a href="#price" class="btn btn-main">Записаться на урок</a>
+        <a href="#reviews" class="btn btn-out">Читать отзывы</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <p class="s-label">Обо мне</p>
+    <h2 class="s-title">София, 21 — открываю набор!</h2>
+    <div class="about-grid">
+      <div class="about-left">
+        <p>
+          Меня зовут <strong>Sofya</strong>, мне 21 год. У меня <strong>образование переводчика</strong> и больше года реального опыта преподавания английского детям.
+        </p>
+        <p>
+          Работала как индивидуально, так и в <strong>группах</strong> — нахожу подход к каждому ребёнку. Есть сильная практика: работала с учеником из <strong>школы Абу-Даби</strong>, где обучение полностью на английском языке.
+        </p>
+        <blockquote>
+          «Умею найти подход к детям и сделать занятия комфортными и интересными» — из отзыва родителя
+        </blockquote>
+
+        <div class="achieve-list">
+          <div class="achieve-item">
+            <span class="achieve-icon">🏫</span>
+            <p>Подготовила деток к <strong>1 классу</strong> — уверенно читают, пишут и говорят первые фразы</p>
+          </div>
+          <div class="achieve-item">
+            <span class="achieve-icon">⭐</span>
+            <p>Подтянула успеваемость учеников до оценки <strong>«отлично»</strong></p>
+          </div>
+          <div class="achieve-item">
+            <span class="achieve-icon">🗣</span>
+            <p>Научила малышей говорить первое <strong>"Hello"</strong> — и не бояться новых слов</p>
+          </div>
+          <div class="achieve-item">
+            <span class="achieve-icon">🌍</span>
+            <p>Опыт с учеником <strong>международной школы</strong> (Абу-Даби) — занятия полностью на английском</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-right">
+        <div class="stat-row">
+          <div class="stat-card"><div class="n">50+</div><div class="l">учеников</div></div>
+          <div class="stat-card"><div class="n">1+</div><div class="l">год опыта</div></div>
+          <div class="stat-card"><div class="n">★5.0</div><div class="l">все отзывы</div></div>
+          <div class="stat-card"><div class="n">100%</div><div class="l">довольных родителей</div></div>
+        </div>
+        <div class="value-card">
+          <div class="v-icon">🎯</div>
+          <div><h4>Индивидуальный подход</h4><p>Каждый урок — под темп и уровень ребёнка</p></div>
+        </div>
+        <div class="value-card">
+          <div class="v-icon">✨</div>
+          <div><h4>Интересные уроки</h4><p>Дети ждут следующего занятия с нетерпением</p></div>
+        </div>
+        <div class="value-card">
+          <div class="v-icon">📈</div>
+          <div><h4>Реальный результат</h4><p>Ученики становятся отличниками и говорят по-английски</p></div>
+        </div>
+        <div class="value-card">
+          <div class="v-icon">💬</div>
+          <div><h4>Связь с родителями</h4><p>Всегда на связи, рассказываю об успехах ребёнка</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE -->
+<section id="price">
+  <div class="wrap">
+    <p class="s-label">Прайс-лист</p>
+    <h2 class="s-title">Стоимость занятий</h2>
+    <div class="price-grid">
+
+      <div class="price-card">
+        <div class="pname">Разовое занятие</div>
+        <div class="pamount"><sup>₸</sup>____<span> /урок</span></div>
+        <div class="pdesc">60 минут · онлайн или офлайн</div>
+        <ul>
+          <li>Индивидуальный урок</li>
+          <li>Разбор домашнего задания</li>
+          <li>Учебные материалы</li>
+        </ul>
+      </div>
+
+      <div class="price-card feat">
+        <div class="pop-badge">Популярно</div>
+        <div class="pname">Абонемент · 4 урока</div>
+        <div class="pamount"><sup>₸</sup>____<span> /мес</span></div>
+        <div class="pdesc">4 занятия · экономия 10%</div>
+        <ul>
+          <li>4 урока по 60 минут</li>
+          <li>Домашние задания</li>
+          <li>Отчёт об успехах</li>
+          <li>Приоритетное расписание</li>
+        </ul>
+      </div>
+
+      <div class="price-card">
+        <div class="pname">Подготовка к школе</div>
+        <div class="pamount"><sup>₸</sup>____<span> /урок</span></div>
+        <div class="pdesc">Для детей 5–7 лет</div>
+        <ul>
+          <li>Алфавит и чтение</li>
+          <li>Первые слова и фразы</li>
+          <li>Игровая форма урока</li>
+          <li>Подготовка к 1 классу</li>
+        </ul>
+      </div>
+
+    </div>
+    <p class="price-note">
+      Точную стоимость уточняйте в Instagram<br>
+      <span class="free-pill">🎁 Первый пробный урок — бесплатно!</span>
+    </p>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="wrap">
+    <p class="s-label">Отзывы</p>
+    <h2 class="s-title">Что говорят ученики и родители</h2>
+    <div class="reviews-grid">
+
+      <div class="r-card wide">
+        <span class="qmark">"</span>
+        <p class="r-text">
+          Благодаря занятиям с вами Матвей достиг заметных успехов. Существенно улучшилось чтение на английском — теперь он уверенно читает надписи и не боится новых слов. Также значительно продвинулся в написании: Матвей может правильно записывать выученные слова даже на слух. Кроме того, он научился поддерживать простую беседу и уверенно отвечать на вопросы базового уровня.
+          <br><br>
+          Отдельно хочется отметить, что Вы — довольно требовательный педагог, что даёт отличные результаты, при этом умеете найти подход к детям и сделать занятия комфортными и интересными. Мы очень довольны результатами и благодарны Вам за профессионализм и внимательный подход.
+        </p>
+        <div class="r-author">
+          <div class="avatar">М</div>
+          <div>
+            <div class="a-name">Мама Матвея</div>
+            <div class="a-role">Родитель ученика</div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="r-card">
+        <span class="qmark">"</span>
+        <p class="r-text">
+          Соня, мы расстроены что ушли — Аселя так привыкла к вам! Она стала отличницей благодаря вам. Хочу сказать спасибо, что потянули её. Пусть у вас всё будет хорошо. Удачи вам!
+        </p>
+        <div class="r-author">
+          <div class="avatar">А</div>
+          <div>
+            <div class="a-name">Мама Асели</div>
+            <div class="a-role">Родитель ученицы</div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="r-card">
+        <span class="qmark">"</span>
+        <p class="r-text">
+          Софья Алексеевна, я очень благодарна вам за то, что вы учили меня многому. Уроки проходили очень интересно! С вами было очень круто, честно 🤍
+        </p>
+        <div class="r-author">
+          <div class="avatar">✨</div>
+          <div>
+            <div class="a-name">Ученица</div>
+            <div class="a-role">Личный отзыв</div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <p class="s-label">Контакты</p>
+    <h2 class="s-title">Записаться на урок</h2>
+    <p>Напишите мне в Instagram — отвечу быстро и обсудим удобное время. Первый пробный урок бесплатно!</p>
+    <div class="c-btns">
+      <a href="https://www.instagram.com/kstudy._.school" target="_blank" class="btn btn-ig">
+        📷 @kstudy._.school
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Sofya · Репетитор английского языка · Сделано с <span>♥</span></p>
+</footer>
+
+<script>
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+    links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+  });
+</script>
+</body>
+</html>
