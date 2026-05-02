@@ -20,7 +20,6 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--brown); line-height: 1.6; }
 
-    /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0;
       background: rgba(253,240,243,0.93); backdrop-filter: blur(14px);
@@ -39,7 +38,6 @@
     }
     .nav-links a:hover, .nav-links a.active { background: var(--pink-d); color: #fff; }
 
-    /* HERO */
     .hero {
       min-height: 100vh; display: flex; align-items: center; justify-content: center;
       background: linear-gradient(135deg, #fdf0f3 0%, #fce8ed 50%, #f5dde5 100%);
@@ -53,21 +51,9 @@
     .hero-photo-wrap img {
       width: 100%; max-width: 360px;
       border-radius: 42% 58% 62% 38% / 38% 42% 58% 62%;
-      object-fit: cover; aspect-ratio: 3/4; display: block;
+      object-fit: cover; object-position: top; aspect-ratio: 3/4; display: block;
       box-shadow: 0 32px 80px rgba(224,125,150,.32);
     }
-    .photo-blob {
-      width: 100%; max-width: 360px;
-      border-radius: 42% 58% 62% 38% / 38% 42% 58% 62%;
-      aspect-ratio: 3/4;
-      background: linear-gradient(135deg, var(--pink) 0%, var(--pink-d) 100%);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      color: white; text-align: center; padding: 40px; gap: 12px;
-      box-shadow: 0 32px 80px rgba(224,125,150,.32);
-      font-size: .85rem;
-    }
-    .photo-blob .emoji { font-size: 72px; }
     .hero-badge {
       position: absolute; bottom: 28px; right: 0;
       background: white; border-radius: 18px; padding: 13px 18px;
@@ -94,13 +80,11 @@
     .btn-out { background: transparent; color: var(--pink-d); border: 2px solid var(--pink); }
     .btn-out:hover { background: var(--pink); color: white; }
 
-    /* SECTIONS */
     section { padding: 86px 24px; }
     .wrap { max-width: 960px; margin: 0 auto; }
     .s-label { font-size: .72rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--pink-d); margin-bottom: 10px; }
     .s-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.9rem, 3.2vw, 2.7rem); font-weight: 600; color: var(--brown); margin-bottom: 44px; line-height: 1.2; }
 
-    /* ABOUT */
     #about { background: white; }
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
     .about-left p { color: var(--gray); margin-bottom: 16px; font-size: .97rem; }
@@ -120,13 +104,12 @@
     .value-card h4 { font-size: .9rem; font-weight: 600; color: var(--brown); margin-bottom: 3px; }
     .value-card p { font-size: .82rem; color: var(--gray); }
 
-    /* PRICE */
     #price { background: var(--rose); }
     .free-banner {
       background: linear-gradient(135deg, var(--pink-d), #c46880);
       color: white; text-align: center;
       border-radius: 20px; padding: 20px 24px; margin-bottom: 36px;
-      font-size: 1.05rem; font-weight: 600; letter-spacing: .01em;
+      font-size: 1.05rem; font-weight: 600;
     }
     .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
     .price-card {
@@ -135,11 +118,7 @@
     }
     .price-card:hover { border-color: var(--pink); transform: translateY(-4px); box-shadow: 0 20px 50px rgba(224,125,150,.15); }
     .price-card.feat { background: linear-gradient(135deg, var(--pink-d) 0%, #c46880 100%); }
-    .price-card.feat .pname,
-    .price-card.feat .pamount,
-    .price-card.feat .pdesc,
-    .price-card.feat li,
-    .price-card.feat .price-rows li { color: white !important; }
+    .price-card.feat .pname, .price-card.feat .pamount, .price-card.feat .pdesc, .price-card.feat li { color: white !important; }
     .price-card.feat li::before { background: rgba(255,255,255,.5) !important; }
     .pop-badge { position: absolute; top: 18px; right: 18px; background: white; color: var(--pink-d); font-size: .68rem; font-weight: 700; padding: 4px 10px; border-radius: 50px; }
     .pname { font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--gray); margin-bottom: 14px; }
@@ -147,15 +126,10 @@
     .pamount sup { font-size: 1.2rem; vertical-align: super; }
     .pamount span { font-size: 1rem; color: var(--gray); }
     .pdesc { font-size: .83rem; color: var(--gray); margin: 10px 0 18px; }
-    .price-rows { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 4px; }
+    .price-rows { list-style: none; display: flex; flex-direction: column; gap: 9px; }
     .price-rows li { font-size: .85rem; color: var(--brown); display: flex; align-items: flex-start; gap: 9px; line-height: 1.4; }
     .price-rows li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--pink); flex-shrink: 0; margin-top: 6px; }
-    .divider { border: none; border-top: 1px solid #f0d5dc; margin: 16px 0; }
-    .price-card.feat .divider { border-color: rgba(255,255,255,.25); }
-    .duration-note { font-size: .78rem; color: var(--gray); font-style: italic; }
-    .price-card.feat .duration-note { color: rgba(255,255,255,.75); }
 
-    /* REVIEWS */
     #reviews { background: white; }
     .reviews-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     .r-card { background: var(--rose); border-radius: 24px; padding: 28px; border: 1px solid #f0d5dc; }
@@ -168,7 +142,6 @@
     .a-role { font-size: .75rem; color: var(--gray); }
     .stars { color: #f59e0b; font-size: .82rem; margin-top: 2px; }
 
-    /* CONTACT */
     #contact { background: linear-gradient(135deg, #f9dde5 0%, #fce8ed 100%); text-align: center; }
     #contact .s-title { margin-bottom: 14px; }
     #contact > .wrap > p { color: var(--gray); margin-bottom: 36px; }
@@ -185,7 +158,6 @@
       .nav-links a { padding: 7px 10px; font-size: .76rem; }
       .hero-inner { grid-template-columns: 1fr; gap: 36px; text-align: center; }
       .hero-photo-wrap { justify-content: center; }
-      .photo-blob { max-width: 260px; }
       .hero-badge { right: 10px; }
       .tags, .btns { justify-content: center; }
       .about-grid { grid-template-columns: 1fr; }
@@ -197,7 +169,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <div class="nav-logo">Sofia ✦</div>
@@ -209,23 +180,19 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-inner">
     <div class="hero-photo-wrap">
-      <img src="photo.jpg" alt="Sofia Alekseevna" />
+      <img src="IMG_5990.jpeg" alt="Sofia Alekseevna" />
       <div class="hero-badge">
         <div class="num">50+</div>
         <div class="lbl">довольных<br>учеников</div>
       </div>
     </div>
-
     <div class="hero-text">
       <p class="pre">Репетитор английского языка</p>
       <h1>Привет, я<br><em>Sofia</em> 🌸</h1>
-      <p class="hero-sub">
-        21 год, образование переводчика. Открываю долгожданный набор! За год работы — десятки довольных учеников и реальные результаты.
-      </p>
+      <p class="hero-sub">21 год, образование переводчика. Открываю долгожданный набор! За год работы — десятки довольных учеников и реальные результаты.</p>
       <div class="tags">
         <span class="tag">🇬🇧 Английский язык</span>
         <span class="tag">🎒 Подготовка к школе</span>
@@ -240,14 +207,13 @@
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="wrap">
     <p class="s-label">Обо мне</p>
-    <h2 class="s-title">София, 21 — открываю набор!</h2>
+    <h2 class="s-title">Sofia, 21 — открываю набор!</h2>
     <div class="about-grid">
       <div class="about-left">
-        <p>Меня зовут <strong>Sofya</strong>, мне 21 год. У меня <strong>образование переводчика</strong> и больше года реального опыта преподавания английского детям.</p>
+        <p>Меня зовут <strong>Sofia</strong>, мне 21 год. У меня <strong>образование переводчика</strong> и больше года реального опыта преподавания английского детям.</p>
         <p>Работаю <strong>индивидуально</strong> — нахожу подход к каждому ребёнку. Есть сильная практика: работала с учеником из <strong>школы Абу-Даби</strong>, где обучение полностью на английском языке.</p>
         <blockquote>«Добрая, отзывчивая, находит подход к каждому ребёнку, умная, профессионал в своей сфере» — из рекомендательного письма родителя</blockquote>
         <div class="achieve-list">
@@ -273,19 +239,12 @@
   </div>
 </section>
 
-<!-- PRICE -->
 <section id="price">
   <div class="wrap">
     <p class="s-label">Прайс-лист</p>
     <h2 class="s-title">Стоимость занятий</h2>
-
-    <div class="free-banner">
-      🎁 Индивидуальное обучение &nbsp;·&nbsp; Пробный урок — БЕСПЛАТНО!
-    </div>
-
+    <div class="free-banner">🎁 Индивидуальное обучение · Пробный урок — БЕСПЛАТНО!</div>
     <div class="price-grid">
-
-      <!-- Английский язык -->
       <div class="price-card">
         <div class="pname">Английский язык</div>
         <div class="pamount"><sup>₸</sup>4 500<span> /урок</span></div>
@@ -295,8 +254,6 @@
           <li>12 занятий (3 раза в неделю) — <strong>54 000 ₸</strong></li>
         </ul>
       </div>
-
-      <!-- Подготовка к школе 50 мин -->
       <div class="price-card feat">
         <div class="pop-badge">Популярно</div>
         <div class="pname">Подготовка к школе</div>
@@ -308,189 +265,82 @@
           <li>20 занятий (пн–пт) — <strong>50 000 ₸</strong></li>
         </ul>
       </div>
-
-      <!-- Подготовка к школе 100 мин -->
       <div class="price-card">
         <div class="pname">Подготовка к школе · интенсив</div>
         <div class="pamount"><sup>₸</sup>5 000<span> /урок</span></div>
-        <div class="pdesc">Длительность — 100 минут (50 мин + перерыв + 50 мин)</div>
+        <div class="pdesc">100 минут (50 мин + перерыв + 50 мин)</div>
         <ul class="price-rows">
           <li>20 занятий (каждый день пн–пт) — <strong>100 000 ₸</strong></li>
           <li>12 занятий (3 раза в неделю) — <strong>60 000 ₸</strong></li>
         </ul>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- REVIEWS -->
 <section id="reviews">
   <div class="wrap">
     <p class="s-label">Отзывы</p>
     <h2 class="s-title">Что говорят ученики и родители</h2>
     <div class="reviews-grid">
-
-      <!-- Рекомендательное письмо — широкий -->
       <div class="r-card wide">
         <span class="qmark">"</span>
-        <p class="r-text">
-          Рекомендательное письмо! Я родитель Джакуповой Амани, ученицы 3 класса. Рекомендую Софью Алексеевну как отличного педагога по английскому и другим предметам: математике, русскому, литературе. Рекомендую Софью как отличного специалиста в своей практике — знает подход к детям, профессионально и требовательно занимается с детьми. Мы очень довольны её профессиональными знаниями и ответственностью к своей работе.
-          <br><br>
-          Характеристика: <strong>добрая, отзывчивая, находит подход к каждому ребёнку, умная, профессионал в своей сфере.</strong>
-        </p>
-        <div class="r-author">
-          <div class="avatar">И</div>
-          <div>
-            <div class="a-name">Индира, мама Амани (3 класс)</div>
-            <div class="a-role">Рекомендательное письмо</div>
-            <div class="stars">★★★★★</div>
-          </div>
-        </div>
+        <p class="r-text">Рекомендательное письмо! Я родитель Джакуповой Амани, ученицы 3 класса. Рекомендую Софью Алексеевну как отличного педагога по английскому и другим предметам: математике, русскому, литературе. Знает подход к детям профессионально и требовательно. Мы очень довольны её профессиональными знаниями и ответственностью к своей работе.<br><br>Характеристика: <strong>добрая, отзывчивая, находит подход к каждому ребёнку, умная, профессионал в своей сфере.</strong></p>
+        <div class="r-author"><div class="avatar">И</div><div><div class="a-name">Индира, мама Амани (3 класс)</div><div class="a-role">Рекомендательное письмо</div><div class="stars">★★★★★</div></div></div>
       </div>
-
-      <!-- Мама Матвея — широкий -->
       <div class="r-card wide">
         <span class="qmark">"</span>
-        <p class="r-text">
-          Благодаря занятиям с вами Матвей достиг заметных успехов. Существенно улучшилось чтение на английском — теперь он уверенно читает надписи и не боится новых слов. Также значительно продвинулся в написании: Матвей может правильно записывать выученные слова даже на слух. Кроме того, он научился поддерживать простую беседу и уверенно отвечать на вопросы базового уровня.
-          <br><br>
-          Отдельно хочется отметить, что Вы — довольно требовательный педагог, что даёт отличные результаты, при этом умеете найти подход к детям и сделать занятия комфортными и интересными. Мы очень довольны результатами и благодарны Вам за профессионализм и внимательный подход.
-        </p>
-        <div class="r-author">
-          <div class="avatar">М</div>
-          <div>
-            <div class="a-name">Мама Матвея</div>
-            <div class="a-role">Родитель ученика</div>
-            <div class="stars">★★★★★</div>
-          </div>
-        </div>
+        <p class="r-text">Хочу ещё раз искренне поблагодарить вас за занятия с Тимофеем. Вы смогли найти к нему подход, и это было очень ценно для нас, особенно учитывая, что формат онлайн-обучения в рамках британской программы был для вас новым. Вы очень быстро адаптировались и прекрасно справились с задачей.<br><br>Мы остались очень довольны тем, как вы выстроили с Тимофеем контакт, и его результатами. Его учитель русского языка обратила внимание на заметный прогресс — улучшилась мелкая моторика, почерк, и писать ему теперь гораздо легче. Спасибо за ваш труд, внимание и вклад в его развитие 🤍</p>
+        <div class="r-author"><div class="avatar">Т</div><div><div class="a-name">Мама Тимофея</div><div class="a-role">Британская программа · онлайн</div><div class="stars">★★★★★</div></div></div>
       </div>
-
-      <!-- Принцесса -->
-      <div class="r-card">
-        <span class="qmark">"</span>
-        <p class="r-text">
-          Хотела выразить огромную благодарность за то что подтянули моего ребёнка. Моя принцесса очень довольна, что выбрали именно вас. Вы очень крутая, знаете свою работу и как найти подход к каждому ребёнку. За короткий промежуток времени вы очень сильно подтянули нас по учёбе. Спасибо большое!
-        </p>
-        <div class="r-author">
-          <div class="avatar">👸</div>
-          <div>
-            <div class="a-name">Мама ученицы</div>
-            <div class="a-role">Родитель</div>
-            <div class="stars">★★★★★</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Тимофей подробный — широкий -->
       <div class="r-card wide">
         <span class="qmark">"</span>
-        <p class="r-text">
-          Хочу ещё раз искренне поблагодарить вас за занятия с Тимофеем. Вы смогли найти к нему подход, и это было очень ценно для нас, особенно учитывая, что формат онлайн-обучения в рамках британской программы был для вас новым. Вы очень быстро адаптировались и прекрасно справились с задачей.
-          <br><br>
-          Мы остались очень довольны тем, как вы выстроили с Тимофеем контакт, и, конечно, его результатами. Отдельно хочу отметить, что его учитель русского языка здесь обратила внимание на заметный прогресс — у него стала лучше работать мелкая моторика, улучшился почерк, и писать ему теперь гораздо легче, чем раньше.
-          <br><br>
-          Спасибо вам большое за ваш труд, внимание и вклад в его развитие 🤍
-        </p>
-        <div class="r-author">
-          <div class="avatar">Т</div>
-          <div>
-            <div class="a-name">Мама Тимофея</div>
-            <div class="a-role">Британская программа · онлайн</div>
-            <div class="stars">★★★★★</div>
-          </div>
-        </div>
+        <p class="r-text">Благодаря занятиям с вами Матвей достиг заметных успехов. Существенно улучшилось чтение на английском — теперь он уверенно читает надписи и не боится новых слов. Также значительно продвинулся в написании: Матвей может правильно записывать выученные слова даже на слух. Кроме того, он научился поддерживать простую беседу и уверенно отвечать на вопросы базового уровня.<br><br>Отдельно хочется отметить, что Вы — довольно требовательный педагог, что даёт отличные результаты, при этом умеете найти подход к детям и сделать занятия комфортными и интересными. Мы очень довольны результатами и благодарны Вам за профессионализм и внимательный подход.</p>
+        <div class="r-author"><div class="avatar">М</div><div><div class="a-name">Мама Матвея</div><div class="a-role">Родитель ученика</div><div class="stars">★★★★★</div></div></div>
       </div>
-
-      <!-- Тимофей скучает -->
       <div class="r-card">
         <span class="qmark">"</span>
-        <p class="r-text">
-          Мы очень благодарны вам за вашу профессиональную работу. Тимофей уже скучает по вам и просит ещё занятий с вами летом! ❤️
-        </p>
-        <div class="r-author">
-          <div class="avatar">Т</div>
-          <div>
-            <div class="a-name">Мама Тимофея</div>
-            <div class="a-role">Родитель ученика</div>
-            <div class="stars">★★★★★</div>
-          </div>
-        </div>
+        <p class="r-text">Хотела выразить огромную благодарность за то что подтянули моего ребёнка. Моя принцесса очень довольна, что выбрали именно вас. Вы очень крутая, знаете свою работу и как найти подход к каждому ребёнку. За короткий промежуток времени очень сильно подтянули нас по учёбе. Спасибо большое!</p>
+        <div class="r-author"><div class="avatar">👸</div><div><div class="a-name">Мама ученицы</div><div class="a-role">Родитель</div><div class="stars">★★★★★</div></div></div>
       </div>
-
-      <!-- Спасибо за профессионализм -->
       <div class="r-card">
         <span class="qmark">"</span>
-        <p class="r-text">
-          Добрый день! Спасибо большое Вам за работу с нашими детьми. За Ваш профессионализм! 🥰
-        </p>
-        <div class="r-author">
-          <div class="avatar">💛</div>
-          <div>
-            <div class="a-name">Родитель</div>
-            <div class="a-role">Отзыв в мессенджере</div>
-            <div class="stars">★★★★★</div>
-          </div>
-        </div>
+        <p class="r-text">Аселя так привыкла к вам! Она стала отличницей благодаря вам. Хочу сказать спасибо, что потянули её. Пусть у вас всё будет хорошо. Удачи вам!</p>
+        <div class="r-author"><div class="avatar">А</div><div><div class="a-name">Мама Асели</div><div class="a-role">Родитель ученицы</div><div class="stars">★★★★★</div></div></div>
       </div>
-
-      <!-- Аселя -->
       <div class="r-card">
         <span class="qmark">"</span>
-        <p class="r-text">
-          Аселя так привыкла к вам! Она стала отличницей благодаря вам. Хочу сказать спасибо, что потянули её. Пусть у вас всё будет хорошо. Удачи вам!
-        </p>
-        <div class="r-author">
-          <div class="avatar">А</div>
-          <div>
-            <div class="a-name">Мама Асели</div>
-            <div class="a-role">Родитель ученицы</div>
-            <div class="stars">★★★★★</div>
-          </div>
-        </div>
+        <p class="r-text">Спасибо большое Вам за работу с нашими детьми. За Ваш профессионализм! 🥰</p>
+        <div class="r-author"><div class="avatar">💛</div><div><div class="a-name">Родитель</div><div class="a-role">Отзыв в мессенджере</div><div class="stars">★★★★★</div></div></div>
       </div>
-
-      <!-- Ученица -->
       <div class="r-card">
         <span class="qmark">"</span>
-        <p class="r-text">
-          Я очень благодарна вам за то, что вы учили меня многому. Уроки проходили очень интересно! С вами было очень круто, честно 🤍
-        </p>
-        <div class="r-author">
-          <div class="avatar">✨</div>
-          <div>
-            <div class="a-name">Ученица</div>
-            <div class="a-role">Личный отзыв</div>
-            <div class="stars">★★★★★</div>
-          </div>
-        </div>
+        <p class="r-text">Тимофей уже скучает по вам и просит ещё занятий с вами летом! Мы очень благодарны вам за профессиональную работу ❤️</p>
+        <div class="r-author"><div class="avatar">Т</div><div><div class="a-name">Мама Тимофея</div><div class="a-role">Родитель ученика</div><div class="stars">★★★★★</div></div></div>
       </div>
-
+      <div class="r-card">
+        <span class="qmark">"</span>
+        <p class="r-text">Я очень благодарна вам за то, что вы учили меня многому. Уроки проходили очень интересно! С вами было очень круто, честно 🤍</p>
+        <div class="r-author"><div class="avatar">✨</div><div><div class="a-name">Ученица</div><div class="a-role">Личный отзыв</div><div class="stars">★★★★★</div></div></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="wrap">
     <p class="s-label">Контакты</p>
     <h2 class="s-title">Записаться на урок</h2>
     <p>Напишите мне — отвечу быстро и обсудим удобное время.<br>Первый пробный урок бесплатно!</p>
     <div class="c-btns">
-      <a href="https://wa.me/77476545527" target="_blank" class="btn btn-phone">
-        💬 WhatsApp +7 747 654 55 27
-      </a>
-      <a href="https://www.instagram.com/lllasophie" target="_blank" class="btn btn-ig">
-        📷 @lllasophie
-      </a>
+      <a href="https://wa.me/77476545527" target="_blank" class="btn btn-phone">💬 WhatsApp +7 747 654 55 27</a>
+      <a href="https://www.instagram.com/lllasophie" target="_blank" class="btn btn-ig">📷 @lllasophie</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>© 2025 Sofia Alekseevna · Репетитор английского языка · Сделано с <span>♥</span>
-</p>
+  <p>© 2025 Sofia Alekseevna · Репетитор английского языка · Сделано с <span>♥</span></p>
 </footer>
 
 <script>
